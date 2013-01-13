@@ -45,6 +45,11 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.STORAGE" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name"
         android:hardwareAccelerated="true"
@@ -57,6 +62,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="at.abraxas.amarino.AmarinoService" />
+
+        <receiver
+            android:name="at.abraxas.amarino.RemoteControl"
+            android:process="at.abraxas.amarino" >
+            <intent-filter>
+                <action android:name="amarino.intent.action.CONNECT" />
+                <action android:name="amarino.intent.action.CONNECTED" />
+                <action android:name="amarino.intent.action.ACTION_CONNECTED_DEVICES" />
+                <action android:name="amarino.intent.action.CONNECTION_FAILED" />
+                <action android:name="amarino.intent.action.DISABLE" />
+                <action android:name="amarino.intent.action.DISABLE_ALL" />
+                <action android:name="amarino.intent.action.DISCONNECT" />
+                <action android:name="amarino.intent.action.DISCONNECTED" />
+                <action android:name="amarino.intent.action.EDIT_PLUGIN" />
+                <action android:name="amarino.intent.action.ENABLE" />
+                <action android:name="amarino.intent.action.ACTION_GET_CONNECTED_DEVICES" />
+                <action android:name="amarino.intent.action.PAIRING_REQUESTED" />
+                <action android:name="amarino.intent.action.RECEIVED" />
+                <action android:name="amarino.intent.action.SEND" />
+            </intent-filter>
+        </receiver>
     </application>
 
     <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="16"/>

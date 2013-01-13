@@ -34,7 +34,24 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    },
+        var amarino = new amarinoPlugin({"connectionId":"00:12:03:10:22:91"},
+        	function() {
+     			amarino.buttonEvent(
+       				function() {
+       					alert("musart");
+      				},
+       				function() {}
+       			);
+        	},
+        	function() {
+        	}
+        );
+        /*
+        setTimeout(function() {
+			amarino.controlLED();
+		}, 10000);
+		*/
+	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
