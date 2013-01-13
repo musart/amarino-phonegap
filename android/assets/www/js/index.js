@@ -34,11 +34,22 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        
         var amarino = new amarinoPlugin({"connectionId":"00:12:03:10:22:91"},
         	function() {
      			amarino.buttonEvent(
-       				function() {
-       					alert("musart");
+       				function(data) {
+       					var currentTimestamp = new Date().getTime();
+       					
+       					console.log("amarinoPlugin:" + (currentTimestamp-amarino.timestamp) );
+       					if(data === "B:released") {
+       						if( (currentTimestamp-amarino.timestamp) < 1000 ) {
+       							alert("short press");
+       						} else {
+       							alert("long press");
+       						}
+       					}
+       					amarino.timestamp = currentTimestamp;
       				},
        				function() {}
        			);
@@ -46,6 +57,7 @@ var app = {
         	function() {
         	}
         );
+        amarino.timestamp = new Date().getTime();
         /*
         setTimeout(function() {
 			amarino.controlLED();

@@ -20,6 +20,7 @@ public class amarinoPlugin extends Plugin {
 	// "00:12:03:10:22:91"
 	private String mDeviceAddress = "";
 	private boolean mIsConnected = false;
+	private String mButtonCallbackId = "";
 	
 	private ArduinoReceiver m_arduinoReceiver = null;
 	
@@ -108,6 +109,7 @@ public class amarinoPlugin extends Plugin {
 				return new PluginResult(PluginResult.Status.ERROR, "Bluetooth is not connected.");
 			}
 			
+			mButtonCallbackId = callbackId;
 			Amarino.sendDataToArduino(cordova.getActivity(), mDeviceAddress, 'B', 0, callbackId);
 			
 			PluginResult r = new PluginResult(PluginResult.Status.NO_RESULT);
@@ -148,8 +150,16 @@ public class amarinoPlugin extends Plugin {
 							Log.d(TAG, "[ArudinoReceiver]addr =" + address);
 							Log.d(TAG, "[ArudinoReceiver]dataType =" + dataType);
 							Log.d(TAG, "[ArudinoReceiver]callbackId = " + callbackId);
+							
+							if(data.startsWith("B:") == true) {
+								PluginResult r = new PluginResult(PluginResult.Status.OK, data);
+								r.setKeepCallback(true);
+								success(r, mButtonCallbackId);
+							} else {
+								success(new PluginResult(PluginResult.Status.OK, data), callbackId);
+							}
 
-							success(new PluginResult(PluginResult.Status.OK, data), callbackId);
+							
 						}
 					} else {
 						Log.i(TAG, "Address[" + mDeviceAddress + "] is not matched");
