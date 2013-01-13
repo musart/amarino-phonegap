@@ -50,9 +50,9 @@
         <li>
             <h3>What we need</h3>
             <p>Android device : amarino library</p>
-            <img src="resources/android.png" alt="">
+            <img src="../resources/android.png" alt="">
             <p>Arduino device : MeetArduino binary, Arduino sketches program</p>
-            <img src="resources/arduino_duemilanove.png" alt="">
+            <img src="../resources/arduino_duemilanove.png" alt="">
         </li>
     </ol>
 </section>
@@ -71,6 +71,17 @@
     </ol>
 </section>
 
+<section class="slide">
+	<h2>LED test</h2>
+    <script>
+        function blinkingLED() {
+            console.log("test");
+            io.connect().emit('arduino', {led: 'blink'});
+        }
+    </script>
+    <a href="javascript:blinkingLED()">blinking LED</a>
+</section>
+    
 <section class="slide">
 	<h2>amarino and phonegap Architecture</h2>
     <p></p>
@@ -226,8 +237,10 @@
 	<h2>Other Elements: Video Embeds</h2>
 	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
 	
+    <!--
 	<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
-	
+	-->
+    
 	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
 </section>
 

@@ -32,5 +32,8 @@ io.sockets.on('connection', function(socket){
 		console.log("Connection " + socket.id + " terminated.");
 	});
 
+	socket.on('arduino', function(data){
+		socket.broadcast.emit('arduino', data);
+	});
 });
  

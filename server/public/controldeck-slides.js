@@ -58,3 +58,6 @@ iosocket.on('message', function(message) {
 iosocket.on('disconnect', function() {
     console.log('disconnected');
 });
+iosocket.on('arduino', function(data) {
+    console.log('arduino' + data);
+});

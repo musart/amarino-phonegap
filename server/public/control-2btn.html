@@ -9,7 +9,47 @@
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
 	<script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="cordova-2.2.0.js"></script>
+    <script src="amarinoPlugin.js"></script>
+    <script>
+        document.addEventListener('deviceready', onDeviceReady, false);
+        
+        function onDeviceReady() {
+            amarino = new amarinoPlugin({"connectionId":"00:12:03:10:22:91"},
+                function() {
+                    amarino.buttonEvent(
+                        function(data) {
+                            var currentTimestamp = new Date().getTime();
+                            
+                            console.log("amarinoPlugin:" + (currentTimestamp-amarino.timestamp) );
+                            if(data === "B:released") {
+                                if( (currentTimestamp-amarino.timestamp) < 1000 ) {
+                                    console.log("short press");
+                                    io.connect().send("39");
+                                } else {
+                                    console.log("long press");
+                                    io.connect().send("37");
+                                }
+                            }
+                            amarino.timestamp = currentTimestamp;
+                        },
+                        function() {}
+                    );
+                    $arduinoStatus.html("arduino status : connected");
+                },
+                function() {
+                }
+            );
+            amarino.timestamp = new Date().getTime();
+            
+            setTimeout(function() {
+                amarino.controlLED();
+            }, 10000);
+            
+        }
+    </script>
 </head>
 <body>
     <div class="controls-contain">
@@ -20,10 +60,22 @@
             </div>
         </div>
     </div>
+    <div id="arduinoStatus">
+        arduino status : none
+    </div>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./controldeck.js"></script>
+    <script>
+        var $arduinoStatus = $("#arduinoStatus");
+        
+        io.connect().on('arduino', function (data) {
+            console.log("musart" + data.led);
+            if(data.led === "blink") {
+                amarino.controlLED();
+            }
+        });
+    </script>
 
 </body>
 </html>

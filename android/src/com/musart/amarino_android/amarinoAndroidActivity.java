@@ -29,8 +29,8 @@ public class amarinoAndroidActivity extends DroidGap
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        super.loadUrl("file:///android_asset/www/index.html");
-        //super.loadUrl("http://192.168.1.4:8080");
+        //super.loadUrl("file:///android_asset/www/index.html");
+        super.loadUrl("http://192.168.1.4:8080/control-2btn.html");
     }
 }
 
