@@ -36,41 +36,97 @@
 <!-- Begin slides -->
 
 <section class="slide" id="title-slide">
-	<h1>Amarino meets PhoneGap</h1>
-    <div>@musart</div>
+	<h1 style="font-size:80px">Amarino meets PhoneGap</h1>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <p style="margin-left:500px">@musart</p>
 </section>
 
 <section class="slide">
-	<h2>What is amarino</h2>
-    <ol>
+	<h2>Amarino</h2>
+    <ul>
         <li>
-            <h3>Android meets Amarino</h3>
-            <p>Android 폰의 알림기능을 폰 내부에서 아닌 다른 곳에서 받고 싶을 경우.</p>
+            <h3>What is this?</h3>
+            <p>bluetooth library for controlling Arduino</p>
         </li>
         <li>
-            <h3>What we need</h3>
-            <p>Android device : amarino library</p>
-            <img src="../resources/android.png" alt="">
-            <p>Arduino device : MeetArduino binary, Arduino sketches program</p>
-            <img src="../resources/arduino_duemilanove.png" alt="">
+            <h3>What do we need?</h3>
+            <p>HW : Arduino / Android Phone</p>
+            <p>SW : arduino codes / amarino library</p>
+            <p>Tools : sketch tools / eclispe</p>
         </li>
-    </ol>
+        <li>
+            <h3>What can we do?</h3>
+            <p>Android phone can control led and receive button press event via bluetooth</p>
+        </li>
+    </ul>
 </section>
 
 <section class="slide">
-	<h2>What is PhoneGap</h2>
-    <ol>
+	<h2>PhoneGap</h2>
+    <ul>
         <li>
-            <h3>Web framework</h3>
-            <p>Easily create apps using the web technologies you know and love: HTML, CSS and JavaScript</p>
+            <h3>What is this?</h3>
+            <p>HTML5 Mobile Application framework</p>
         </li>
         <li>
-            <h3>What we need</h3>
-            <p>Android PhoneGap Library</p>
+            <h3>What do we need?</h3>
+            <p>HW : Android Phone</p>
+            <p>SW : PhoneGap library</p>
         </li>
-    </ol>
+        <li>
+            <h3>What can we do?</h3>
+            <p>Web application can load on android phone as a mobile application.</p>
+        </li>
+    </ul>
 </section>
 
+<section class="slide">
+	<h2>amarino meets phonegap</h2>
+    <ul>
+        <li>
+            <h3>What can we do?</h3>
+            <p>Sensors can be controlled by Web Application as an native application.</p>
+            <p>It is easy to make mash up service from web application.</p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+	<h2>hardware and software</h2>
+    <img src="../resources/hw_sw_table.png" alt="">
+</section>
+
+<section class="slide">
+	<h2>today's demo</h2>
+    <ul>
+        <li>
+            <h3>This presentation</h3>
+            <p><code>deck.js</code>, Web presentation framework</p>
+            <p><code>controldeck.js</code> written by node.js amd socket.io</p>
+            <img src="../resources/controldeck.png" alt="">
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+    <script>
+        function blinkingLED() {
+            console.log("test");
+            io.connect().emit('arduino', {led: 'blink'});
+        }
+    </script>
+	<h2>today's demo</h2>
+    <ul>
+        <li>
+            <h3>input / output</h3>
+            <p>button event > amarino > phonegap > web application > send controldeck.js > go to next slide.</p>
+            <p><a href="javascript:blinkingLED()">led button</a> > send web application > phonegap > amarino > led control</p>
+            <img src="../resources/today_demo_architecture.png" alt="">
+        </li>
+    </ul>
+</section>
+    
+<!--
 <section class="slide">
 	<h2>LED test</h2>
     <script>
@@ -81,172 +137,208 @@
     </script>
     <a href="javascript:blinkingLED()">blinking LED</a>
 </section>
-    
-<section class="slide">
-	<h2>amarino and phonegap Architecture</h2>
-    <p></p>
-    <img src="../resources/architecture_of_amarino_and_phonegap.png" alt="">
-</section>
-
-<section class="slide">
-	<h2>Set up Android project</h2>
-    <p></p>
-    <ol>
-        <li>
-            <h3>Amarino Library</h3>
-            <p>Android 폰의 알림기능을 폰 내부에서 아닌 다른 곳에서 받고 싶을 경우.</p>
-        </li>
-        <li>
-            <h3>What we need</h3>
-            <p>Android Phone</p>
-            <p>Arduino</p>
-        </li>
-    </ol>
-</section>
-
-    
-<section class="slide">
-	<h2>The Markup</h2>
-    <p>Slides are just HTML elements with a class of <code>slide</code>.</p>
-    <pre><code></code></pre>
-</section>
-
-<!--
-<section class="slide" id="title-slide">
-	<h1>Getting Started with deck.js</h1>
-</section>
 -->
+
+<section class="slide">
+	<h2>set up bluetooth shield</h2>
+    <table>
+        <tr>
+            <td>
+                <ul>
+                    <li>
+                        <h3>Use Hercules App</h3>
+                        <p>Baud rate : 57600</p>
+                        <p>AT+NAME<font color=blue>musart</font></p>
+                        <p>AT+PIN<font color=blue>1234</font></p>
+                        <p>AT+BAUD<font color=blue>7</font></p>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <img src="../resources/hercules.png" alt="" style="position:absolute; margin-top:100px">
+            </td>
+        </tr>
+    </table>
+    <p>- <a href="http://cafe.naver.com/mpucafe/2596">cafe.naver.com/mpucafe/2596</a></p>
+    <p>- <a href="http://www.hw-group.com/products/hercules/index_en.html">www.hw-group.com/products/hercules/index_en.html</a></p>
+</section>
+
+<section class="slide">
+	<h2>program meetAndroid</h2>
+    <ul>
+        <li>
+            <p>use Arduino Sketch</p>
+        </li>
+        <li>
+            <p>Set your arduino and serial port</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Arduino Uno & <code>/dev/cu.usbmodemfa131</code></p>
+        </li>
+        <li>
+            <p>connect LED and button to arduino</p>
+        </li>
+        <li>
+            <p>implement source codes for controlling LED and button</p>
+        </li>
+        <li>
+            <p><a href="https://github.com/musart/amarino-phonegap/blob/master/arduino/musart/musart.ino">github.com/musart/amarino-phonegap/blob/master/arduino/musart/musart.ino</a></p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+	<h2>implement amarino</h2>
+    <ul>
+        <li>
+            <p>create android project</p>
+        </li>
+        <li>
+            <p>get source codes</p>
+            <p><code>svn checkout http://amarino.googlecode.com/svn/trunk/ amarino-read-only</code></p>
+        </li>
+        <li>
+            <p>put service and receiver tags in your manifest file</p>
+        </li>
+        <li>
+            <p>add amarino library as a source code</p>
+            <p>use AndroidBluetoothLibrary.jar instead of AmarinoLibrary_v0.55.jar</p>
+            <p>copy ‘src’, ‘res’ and set manifest.xml</p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+	<h2>implement phonegap</h2>
+    <ul>
+        <li>
+            <p>add phonegap library - <code>cordova-2.2.0.jar</code></p>
+        </li>
+        <li>
+            <p>make activity to inherit <code>DroidGap</code></p>
+        </li>
+        <li>
+            <p>call <code>loadUrl()</code> to load web application</p>
+        </li>
+        <li>
+            <p>put a web application into <code>assets</code> folder</p>
+        </li>
+        <li>
+            <p>set res folder and add attribute in <code>manifest.xml</code></p>
+        </li>
+        <li>
+            <p><a href="https://github.com/musart/amarino-phonegap/blob/master/android/src/com/musart/amarino_android/amarinoAndroidActivity.java">github.com/musart/amarino-phonegap/blob/master/android/src/com/musart/amarino_android/amarinoAndroidActivity.java</a></p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+	<h2>implement web application</h2>
+    <ul>
+        <li>
+            <p>add phonegap javascript library - <code>cordova-2.2.0.js</code></p>
+        </li>
+        <li>
+            <p>implement web application</p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
+	<h2>control Javascript API</h2>
+    <pre><code>var <font color=blue>amarino</font> = new <font color=blue>amarinoPlugin</font>({"connectionId":"00:12:03:10:22:91"}, onSuccess, onError);
+
+<font color=blue>amarino.buttonEvent</font>(onCallback, onCallbackError);
+function onCallback(data) {
+  var currentTimestamp = new Date().getTime();
+  
+  if(<font color=blue>data === "B:released"</font>) {
+    if( (currentTimestamp-amarino.timestamp) < 1000 ) {
+      alert("short press");
+    } else {
+       alert("long press");
+    }
+  }
+  amarino.timestamp = currentTimestamp;
+}
+
+<font color=blue>amarino.controlLED();</font></code></pre>
+    <p><a href="https://github.com/musart/amarino-phonegap/blob/master/server/public/control-2btn.html">github.com/musart/amarino-phonegap/blob/master/server/public/control-2btn.html</a></p>
+</section>
+
+<section class="slide">
+	<h2>implement phonegap plugin</h2>
+    <ul>
+        <li>
+            <h3>implement amarino plugin library</h3>
+            <p><code>amarinoPlugin.js</code></p>
+            <p><a href="https://github.com/musart/amarino-phonegap/blob/master/server/public/amarinoPlugin.js">github.com/musart/amarino-phonegap/blob/master/server/public/amarinoPlugin.js</a></p>
+        </li>
+        <li>
+            <h3>implement phonegap amarino plugin</h3>
+            <p><code>amarinoPlugin.java</code></p>
+            <p><a href="https://github.com/musart/amarino-phonegap/blob/master/android/src/com/musart/amarino_android/amarinoPlugin.java">github.com/musart/amarino-phonegap/blob/master/android/src/com/musart/amarino_android/amarinoPlugin.java</a></p>
+        </li>
+    </ul>
+</section>
     
-<section class="slide" id="how-to-overview">
-	<h2>How to Make a Deck</h2>
-	<ol>
-		<li>
-			<h3>Write Slides</h3>
-			<p>Slide content is simple&nbsp;HTML.</p>
-		</li>
-		<li>
-			<h3>Choose Themes</h3>
-			<p>One for slide styles and one for deck&nbsp;transitions.</p>
-		</li>
-		<li>
-			<h3>Include Extensions</h3>
-			<p>Add extra functionality to your deck, or leave it stripped&nbsp;down.</p>
-		</li>
-	</ol>
+<section class="slide">
+	<h2>modify amarino</h2>
+    <ul>
+        <li>
+            <p>Put <font color=blue>intent</font> for phonegap <font color=blue>callback id</font> due to amarino is designed by service-boradcast receiver. That means it is a asynchronous call.</p>
+        </li>
+    </ul>
+    <img src="../resources/sequence.png" alt="">
 </section>
 
-<section class="slide" id="markup">
-	<h2>The Markup</h2>
-	<p>Slides are just HTML elements with a class of <code>slide</code>.</p>
-	<pre><code>&lt;section class=&quot;slide&quot;&gt;
-   &lt;h2&gt;How to Make a Deck&lt;/h2&gt;
-   &lt;ol&gt;
-      &lt;li&gt;
-         &lt;h3&gt;Write Slides&lt;/h3&gt;
-         &lt;p&gt;Slide content is simple HTML.&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-         &lt;h3&gt;Choose Themes&lt;/h3&gt;
-         &lt;p&gt;One for slide styles and one for deck transitions.&lt;/p&gt;
-      &lt;/li&gt;
-      &hellip;
-   &lt;/ol&gt;
-&lt;/section&gt;</code></pre>
+<section class="slide">
+	<h1 style="font-size:70px">What else can we do?</h1>
 </section>
 
-<section class="slide" id="themes">
-	<h2>Style Themes</h2>
-	<p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
-	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
-	<h2>Transition Themes</h2>
-	<p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
-	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
+<section class="slide">
+	<h2>reference</h2>
+    <ul>
+        <li>
+            <p>amarino : <a href="http://www.amarino-toolkit.net/">www.amarino-toolkit.net/</a></p>
+        </li>
+
+        <li>
+            <p>phonegap : <a href="http://phonegap.com/">phonegap.com/</a></p>
+        </li>
+
+        <li>
+            <p>arduino : </p>
+            <p><a href="http://arduino.cc/">arduino.cc/</a></p>
+            <p><a href="http://www.hw-group.com/products/hercules/index_en.html">www.hw-group.com/products/hercules/index_en.html</a></p>
+            <p><a href="http://cafe.naver.com/mpucafe">cafe.naver.com/mpucafe</a></p>
+        </li>
+
+        <li>
+            <p>schematics : <a href="http://breakoutjs.com/examples/schematics.pdf">breakoutjs.com/examples/schematics.pdf</a></p>
+        </li>
+
+        <li>
+            <p>decks.js : <a href="http://imakewebthings.com/deck.js/">imakewebthings.com/deck.js/</a></p>
+        </li>
+
+        <li>
+            <p>controldeck.js : <a href="http://dfcb.github.com/controldeck.js/">dfcb.github.com/controldeck.js/</a></p>
+        </li>
+
+        <li>
+            <p>github source code : <a href="https://github.com/musart/amarino-phonegap">github.com/musart/amarino-phonegap</a></p>
+        </li>
+    </ul>
 </section>
-
-<section class="slide" id="extensions">
-	<h2>Extensions</h2>
-	<p>Core gives you basic slide functionality with left and right arrow navigation, but you may want more. Here are the ones included in this&nbsp;deck:</p>
-	
-	<ul>
-		<li class="slide" id="extensions-goto">
-			<strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
-		</li>
-		
-		<li class="slide" id="extensions-hash">
-			<strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
-		</li>
-
-		<li class="slide" id="extensions-menu">
-			<strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view. Touch devices can double-tap the deck to switch between&nbsp;views.
-		</li>
-
-		<li class="slide" id="extensions-navigation">
-			<strong>deck.navigation</strong>: Adds clickable left and right buttons for the less keyboard&nbsp;inclined.
-		</li>
-
-		<li class="slide" id="extensions-status">
-			<strong>deck.status</strong>: Adds a page number indicator. (current/total)
-		</li>
-
-		<li class="slide" id="extensions-scale">
-			<strong>deck.scale</strong>: Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
-		</li>
-	</ul>
-	
-	<p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files. For a complete list of extension modules included in deck.js, check out the&nbsp;<a href="http://imakewebthings.github.com/deck.js/docs">documentation</a>.</p>
-</section>
-
-<section class="slide" id="nested">
-	<h2>Nested Slides</h2>
-	<p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
-	<pre><code>&lt;section class=&quot;slide&quot;&gt;
-  &lt;h2&gt;Extensions&lt;/h2&gt;
-  &lt;p&gt;Core gives you basic slide functionality...&lt;/p&gt;		
-  &lt;ul&gt;
-     &lt;li class=&quot;slide&quot;&gt;
-        &lt;h3&gt;deck.goto&lt;/h3&gt;
-        &lt;p&gt;Adds a shortcut key to jump to any slide number...&lt;/p&gt;
-     &lt;/li&gt;
-     &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;	
-     &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;
-     &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/section&gt;</code></pre>
-</section>
-
-<section class="slide" id="elements-images">
-	<h2>Other Elements: Images</h2>
-	<img src="http://placekitten.com/600/375" alt="Kitties">
-	<pre><code>&lt;img src=&quot;http://placekitten.com/600/375&quot; alt=&quot;Kitties&quot;&gt;</code></pre>
-</section>
-
-<section class="slide" id="elements-blockquotes">
-	<h2>Other Elements: Blockquotes</h2>
-	<blockquote cite="http://example.org">
-		<p>Food is an important part of a balanced diet.</p>
-		<p><cite>Fran Lebowitz</cite></p>
-	</blockquote>
-	<pre><code>&lt;blockquote cite=&quot;http://example.org&quot;&gt;
-  &lt;p&gt;Food is an important part of a balanced diet.&lt;/p&gt;
-  &lt;p&gt;&lt;cite&gt;Fran Lebowitz&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</code></pre>
-</section>
-
-
-<section class="slide" id="elements-videos">
-	<h2>Other Elements: Video Embeds</h2>
-	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
-	
-    <!--
-	<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
-	-->
     
-	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
-</section>
 
-<section class="slide" id="digging-deeper">
-	<h2>Digging Deeper</h2>
-	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
+
+
+
+    
+<section class="slide" id="title-slide">
+	<h1 style="font-size:80px">Thanks</h1>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <p style="margin-left:500px">@musart</p>
 </section>
 
 <!-- deck.navigation snippet -->
